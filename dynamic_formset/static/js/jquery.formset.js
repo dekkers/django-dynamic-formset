@@ -25,9 +25,9 @@
             },
 
             updateElementIndex = function(elem, prefix, ndx) {
-                var idRegex = new RegExp('(^id_' + prefix + '-\\d+-)|(^)'),
+                var idRegex = new RegExp('(^id_' + prefix + '-(\\d+|__prefix__)-)|(^)'),
                     idReplacement = 'id_' + prefix + '-' + ndx + '-';
-                var nameRegex = new RegExp('(^' + prefix + '-\\d+-)|(^)'),
+                var nameRegex = new RegExp('(^' + prefix + '-(\\d+|__prefix__)-)|(^)'),
                     nameReplacement = prefix + '-' + ndx + '-';
                 if (elem.attr("for")) elem.attr("for", elem.attr("for").replace(idRegex, idReplacement));
                 if (elem.attr('id')) elem.attr('id', elem.attr('id').replace(idRegex, idReplacement));
