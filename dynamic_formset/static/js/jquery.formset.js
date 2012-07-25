@@ -129,6 +129,8 @@
                 template.find('input,select,textarea,label').each(function() {
                     updateElementIndex($(this), options.prefix, 2012);
                 });
+                template.find('input:hidden[id $= "-DELETE"]').remove();
+                template.find('label[for $= "-DELETE"]').remove();
                 insertDeleteLink(template);
             } else {
                 // Otherwise, use the last form in the formset; this works much better if you've got
