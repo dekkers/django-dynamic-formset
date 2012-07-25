@@ -110,6 +110,7 @@
                 // Replace the default checkbox with a hidden field:
                 del.before('<input type="hidden" name="' + del.attr('name') +'" id="' + del.attr('id') +'" />');
                 del.remove();
+                row.find('label[for $= "-DELETE"]').remove();
             }
             if (hasChildElements(row)) {
                 insertDeleteLink(row);
