@@ -1,0 +1,6 @@
+include INSTALL.txt
+include LICENSE
+include README.txt
+include docs/usage.txt
+recursive-include dynamic_formset/static *
+
