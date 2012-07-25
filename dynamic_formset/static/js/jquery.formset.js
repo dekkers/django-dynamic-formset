@@ -173,11 +173,6 @@
                 row.find('input,select,textarea,label').each(function() {
                     var elem = $(this);
                     updateElementIndex(elem, options.prefix, formCount);
-                    if (elem.is('input:checkbox') || elem.is('input:radio')) {
-                        elem.attr('checked', false);
-                    } else {
-                        elem.val('');
-                    }
                 });
                 $('#id_' + options.prefix + '-TOTAL_FORMS').val(formCount + 1);
                 // If a post-add callback was supplied, call it with the added form:
