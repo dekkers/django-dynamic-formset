@@ -47,6 +47,12 @@
                     // If they're laid out as an ordered/unordered list,
                     // insert an <li> after the last list item:
                     row.append('<li><a class="' + options.deleteCssClass + '" href="javascript:void(0)">' + options.deleteText +'</a></li>');
+                } else if (row.is('TABLE')) {
+                    // If each form is a table, insert the remove
+                    // button into the first table cell, so it can be
+                    // put in the upper right corner as delete button:
+                    row.children(':first').prepend('<tr><th class="delete-column" colspan="10"><a class="' +
+                                                   options.deleteCssClass +'" href="javascript:void(0)">' + options.deleteText + '</a></th></tr>');
                 } else {
                     // Otherwise, just insert the remove button as the
                     // last child element of the form's container:
