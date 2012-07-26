@@ -79,6 +79,12 @@
                             forms.eq(i).find('input,select,textarea,label').each(function() {
                                 updateElementIndex($(this), options.prefix, i);
                             });
+                            forms.eq(i).find('script').each(function() {
+                                var idRegex = new RegExp('(id_' + options.prefix + '-(\\d+|__prefix__)-)', 'g'),
+                                idReplacement = 'id_' + options.prefix + '-' + i + '-';
+                                $(this).html($(this).html().replace(idRegex, idReplacement));
+                            });
+
                         }
                     }
                     checkActionButtons();
@@ -135,6 +141,11 @@
                 template.find('input,select,textarea,label').each(function() {
                     updateElementIndex($(this), options.prefix, 2012);
                 });
+                template.find('script').each(function() {
+                    var idRegex = new RegExp('(id_' + options.prefix + '-(\\d+|__prefix__)-)', 'g'),
+                        idReplacement = 'id_' + options.prefix + '-' + 2012 + '-';
+                    $(this).html($(this).html().replace(idRegex, idReplacement));
+                });
                 template.find('input:hidden[id $= "-DELETE"]').remove();
                 template.find('label[for $= "-DELETE"]').remove();
                 insertDeleteLink(template);
@@ -175,11 +186,16 @@
                     buttonRow = $(this).parents('tr.' + options.formCssClass + '-add').get(0) || this;
                 applyExtraClasses(row, formCount);
                 if (options.beforeadd) options.beforeadd(row);
-                row.insertBefore($(buttonRow)).show();
                 row.find('input,select,textarea,label').each(function() {
                     var elem = $(this);
                     updateElementIndex(elem, options.prefix, formCount);
                 });
+                row.find('script').each(function() {
+                    var idRegex = new RegExp('(id_' + options.prefix + '-(\\d+|__prefix__)-)', 'g'),
+                        idReplacement = 'id_' + options.prefix + '-' + formCount + '-';
+                    $(this).html($(this).html().replace(idRegex, idReplacement));
+                });
+                row.insertBefore($(buttonRow)).show();
                 $('#id_' + options.prefix + '-TOTAL_FORMS').val(formCount + 1);
                 // If a post-add callback was supplied, call it with the added form:
                 checkActionButtons();
